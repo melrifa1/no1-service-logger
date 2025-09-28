@@ -1,0 +1,18 @@
+[project]
+name = "no1-service-tracker"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "supabase>=2.6.0",
+    "streamlit>=1.49.1",
+]
+
+[dependency-groups]
+dev = [
+    "streamlit",
+]
+
+[tool.uv.sources]
+no1-service-tracker = { workspace = true }
