@@ -2,7 +2,8 @@
 import streamlit as st
 import datetime, time
 from supabase import create_client
-
+import pytz
+UTC_TZ = pytz.utc
 st.set_page_config(page_title="Quick Service Log", layout="centered")
 sb = create_client(st.secrets["supabase"]["url"], st.secrets["supabase"]["service_key"])
 
@@ -78,7 +79,7 @@ if "quick_user" in st.session_state:
         else:
             sb.table("service_logs").insert({
                 "user_id": user["id"],
-                "served_at": datetime.datetime.now().isoformat(),
+                "served_at": datetime.datetime.now(UTC_TZ).isoformat(),
                 "amount_cents": amount,
                 "tip_cents": tip,
                 "payment_type": payment_type
