@@ -50,7 +50,13 @@ if "quick_user" in st.session_state:
     with st.form("quick_log_form", clear_on_submit=True):
         amount_str = st.text_input("Service Amount")
         tip_str = st.text_input("Tip")
-        payment_type = st.selectbox("Payment Type", ["Credit", "Cash"])
+        # payment_type = st.selectbox("Payment Type", ["Credit", "Cash"])
+        payment_type = st.radio(
+            "Payment Type",
+            ["Credit", "Cash"],
+            index=0,  # Default to "Credit"
+            horizontal=True
+        )
         submitted = st.form_submit_button("Save & Logout")
 
     if submitted:
